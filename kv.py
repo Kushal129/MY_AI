@@ -123,3 +123,7 @@ if __name__ == '__main__':
         else:
             speech_to_text("No speech detected. Goodbye, sir.")
             break
+
+
+
+# Kushal Pipaliya 
