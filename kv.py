@@ -13,9 +13,8 @@ def sptext():
         print("Listening.... ")
         recognizer.adjust_for_ambient_noise(source)
         try:
-            # audio = recognizer.listen(source, timeout=10, phrase_time_limit=10)
-            audio = recognizer.listen(source)
-
+            audio = recognizer.listen(source, timeout=10, phrase_time_limit=10)
+            # audio = recognizer.listen(source)
             print("Recognizing...")
             data = recognizer.recognize_google(audio)
             print("You said:", data)
@@ -40,18 +39,16 @@ def speech_to_text(x):
     engine.runAndWait()
 
 
-# speech_to_text("hello Mr kushal ")
+speech_to_text("hello ")
 # program ne spiite karse uparno aalg ne niche no aalg
 if __name__ == '__main__':
     while True:
         data1 = sptext()
         if data1 is not None:
-            # badalse lowercase after making sure it's not None
             data1 = data1.lower()
-            if "hey kv" in sptext().lower():
+            if "hey kv" in data1:
                 while True:
                     data1 = sptext().lower()
-
                     if "your name" in data1:
                         name = "my name is kv sir"
                         speech_to_text(name)
@@ -74,12 +71,9 @@ if __name__ == '__main__':
                         speech_to_text("Opening youtube sir ")
 
                     elif "play song" in data1:
-                        # Extract the song name from the command
                         song_name = data1.split("play song")[1].strip()
-                    # Construct a YouTube search URL
                         search_query = "+".join(song_name.split())
                         youtube_url = f"https://www.youtube.com/results?search_query={search_query}"
-                    # Open the YouTube URL
                         webbrowser.open(youtube_url)
                         speech_to_text(
                             f"Opening YouTube and searching for {song_name} on YouTube")
